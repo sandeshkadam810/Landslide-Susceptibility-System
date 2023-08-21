@@ -1,0 +1,5 @@
+sandstone-1
+silty-2
+shale-3
+collivium-4
+allivium-5
