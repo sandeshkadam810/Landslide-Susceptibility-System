@@ -5,7 +5,7 @@ from sklearn.metrics import accuracy_score
 
 # Load the dataset
 # Replace 'your_dataset.csv' with the actual filename
-dataset = pd.read_csv('EDAI3\dataset.csv')
+dataset = pd.read_csv('dataset.csv')
 
 # Split the dataset into features (X) and target labels (y)
 X = dataset.drop('landslide', axis=1)
@@ -30,11 +30,11 @@ print(f"Accuracy: {accuracy:.2f}")
 
 # Example prediction using new data
 new_data = pd.DataFrame({
-    'slope': [10],
-    'precipitation': [200],
-    'elevation': [13],
-    'soil_type': [1],
-    'rainfall': [250]
+    'slope': [14],
+    'precipitation': [7],
+    'elevation': [53],
+    'soil_type': [2],
+    'rainfall': [22]
 })
 
 prediction_probabilities = rf_classifier.predict_proba(new_data)
