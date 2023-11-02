@@ -28,13 +28,14 @@ y_predictions = svm_classifier.predict(X_test)
 accuracy = accuracy_score(y_test, y_predictions)
 print(f"Accuracy on Test Set: {accuracy:.2f}")
 
+
 # Example prediction using new data
 new_data = pd.DataFrame({
-    'slope': [14],
-    'precipitation': [7],
-    'elevation': [53],
+    'slope': [5],
+    'precipitation': [77],
+    'elevation': [12],
     'soil_type': [2],
-    'rainfall': [22]
+    'rainfall': [150]
 })
 
 prediction_probabilities = svm_classifier.predict_proba(new_data)

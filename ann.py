@@ -16,7 +16,7 @@ X = dataset.drop('landslide', axis=1)
 y = dataset['landslide']
 
 # Split the dataset into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=52)
 
 # Standardize the features
 scaler = StandardScaler()
@@ -44,7 +44,6 @@ y_pred = y_probabilities.argmax(axis=1)
 
 # Calculate accuracy
 accuracy = accuracy_score(y_test, y_pred)
-print(f"Accuracy: {accuracy:.2f}")
 
 # Example prediction using new data
 new_data = pd.DataFrame({
@@ -56,6 +55,8 @@ new_data = pd.DataFrame({
 })
 new_data_scaled = scaler.transform(new_data)
 prediction_probabilities = model.predict(new_data_scaled)
+
+print(f"Accuracy: {accuracy:.2f}")
 print("Prediction probabilities for new data:")
 print(f"Probability of No Landslide: {prediction_probabilities[0][0]:.2f}")
 print(f"Probability of Landslide: {prediction_probabilities[0][1]:.2f}")
