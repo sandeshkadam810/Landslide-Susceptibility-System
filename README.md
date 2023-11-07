@@ -1,2 +1,0 @@
-# Landslide Susceptibility System
- 
