@@ -1,0 +1,5 @@
+yello-sandstone-1
+black-silty-2
+laterite-shale-3
+peat-collivium-4
+cinder-allivium-5
