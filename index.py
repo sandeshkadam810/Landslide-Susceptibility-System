@@ -91,8 +91,8 @@ class MyRequestHandler(http.server.SimpleHTTPRequestHandler):
                 rainfall_params = {
                     "latitude": latitude,
                     "longitude": longitude,
-                    "start_date": "2022-01-01",
-                    "end_date": "2022-12-31",
+                    "start_date": "2023-09-24",
+                    "end_date": "2023-11-24",
                     "daily": "rain_sum",
                     "timezone": "Asia/Bangkok"
                 }
@@ -102,8 +102,8 @@ class MyRequestHandler(http.server.SimpleHTTPRequestHandler):
                 precipitation_params = {
                     "latitude": latitude,
                     "longitude": longitude,
-                    "start_date": "2022-01-01",
-                    "end_date": "2022-12-31",
+                    "start_date": "2023-09-24",
+                    "end_date": "2023-11-24",
                     "daily": "precipitation_sum",
                     "timezone": "Asia/Bangkok"
                 }
@@ -133,7 +133,15 @@ class MyRequestHandler(http.server.SimpleHTTPRequestHandler):
                     predictions = model.predict(np.expand_dims(preprocessed_input, axis=0))
                     predicted_class = np.argmax(predictions)
                     class_labels = ['2', '5', '3', '4', '1']
+                    soil_type_mapping = {
+                    '1': 'yello soil',
+                    '2': 'black soil',
+                    '3': 'laterite soil',
+                    '4': 'peat soil',
+                    '5': 'cinder soil'
+                     }
                     predicted_label = class_labels[predicted_class]
+                    predicted_soil_type = soil_type_mapping[predicted_label]
 
                     # Example prediction using new data, including elevation and soil type
                     new_data = pd.DataFrame({
@@ -186,10 +194,10 @@ class MyRequestHandler(http.server.SimpleHTTPRequestHandler):
                         <p>Elevation: {elevation} meters</p>
                         <p>Total Rainfall: {total_rainfall} mm</p>
                         <p>Total Precipitation: {total_precipitation} mm</p>
-                        <p>Soil Type: {predicted_label}</p>
+                        <p>Soil Type: {predicted_soil_type}</p>
                         <h3>Landslide Probability</h3>
-                        <p>Average Probability of No Landslide: {average_probabilities[0][0]:.2f}</p>
-                        <p>Average Probability of Landslide: {average_probabilities[0][1]:.2f}</p>
+                        <p>Average Probability of No Landslide: {average_probabilities[0][1]:.2f}</p>
+                        <p>Average Probability of Landslide: {average_probabilities[0][0]:.2f}</p>
                     </body>
                     </html>
                     """
